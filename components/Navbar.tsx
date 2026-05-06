@@ -7,8 +7,19 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { THEME } from "@/data/theme";
 
-const BLUE = "#0B3D91";
+// Importation du thème commun pour centraliser les couleurs et polices
+import { THEME } from "@/data/theme";
+
+// Définition de constantes de couleurs issues du thème pour plus de lisibilité
+const PRIMARY = THEME.colors.primary;
+const SECONDARY = THEME.colors.secondary;
+const ACCENT = THEME.colors.accent;
+const TEXT_COLOR = THEME.colors.text;
+const MUTED_COLOR = THEME.colors.muted;
+
+const BLUE = ACCENT;
 
 const NAV_ITEMS = [
   {

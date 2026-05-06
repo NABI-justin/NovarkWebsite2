@@ -11,6 +11,7 @@
 import Link from "next/link";
 import { CONTACT } from "@/data/novark";
 import { RESPONSABLE_SITE } from "@/data/equipe";
+import { THEME } from "@/data/theme";
 
 // ── METTRE VOS VRAIS LIENS ICI ──────────────────────────────
 const RESEAUX = [
@@ -23,6 +24,11 @@ const RESEAUX = [
   { label: "GitHub",      href: "https://github.com/novark-ai",         icon: "<>" },
   { label: "ResearchGate",href: "https://researchgate.net/lab/novark",  icon: "RG" },
 ];
+
+// Couleurs du thème pour le pied de page
+const PRIMARY = THEME.colors.primary;
+const SECONDARY = THEME.colors.secondary;
+const ACCENT = THEME.colors.accent;
 
 const FOOTER_COLS = {
   "Explorer": [
@@ -57,22 +63,44 @@ export default function Footer() {
   });
 
   return (
-    <footer style={{ background: "#000", borderTop: "3px solid #E8272A", fontFamily: "Arial, sans-serif" }}>
+    <footer
+      style={{
+        background: SECONDARY,
+        borderTop: `3px solid ${PRIMARY}`,
+        fontFamily: THEME.fonts.sans,
+      }}
+    >
 
       {/* SUIVEZ NOVARK */}
       <div style={{ padding: "36px 40px", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div style={{ fontSize: 9, color: "#E8272A", letterSpacing: "0.3em", fontWeight: 700, textTransform: "uppercase", marginBottom: 18 }}>
+          <div
+            style={{
+              fontSize: 9,
+              color: PRIMARY,
+              letterSpacing: "0.3em",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              marginBottom: 18,
+            }}
+          >
             Suivez NOVARK
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
             {RESEAUX.map((r) => (
               <a key={r.label} href={r.href} target="_blank" rel="noopener noreferrer"
                 style={{ display: "flex", alignItems: "center", gap: 8, border: "1px solid rgba(255,255,255,0.1)", padding: "7px 14px", textDecoration: "none", color: "rgba(255,255,255,0.5)", fontSize: 11, fontWeight: 600, transition: "all 0.15s" }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = "#E8272A"; e.currentTarget.style.color = "#fff"; }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = PRIMARY;
+                  e.currentTarget.style.color = "#fff";
+                }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)"; e.currentTarget.style.color = "rgba(255,255,255,0.5)"; }}
               >
-                <span style={{ fontSize: 10, fontWeight: 900, color: "#E8272A" }}>{r.icon}</span>
+                <span
+                  style={{ fontSize: 10, fontWeight: 900, color: PRIMARY }}
+                >
+                  {r.icon}
+                </span>
                 {r.label}
               </a>
             ))}
@@ -85,7 +113,18 @@ export default function Footer() {
         <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 40 }}>
           {Object.entries(FOOTER_COLS).map(([cat, links]) => (
             <div key={cat}>
-              <div style={{ fontSize: 9, color: "#E8272A", letterSpacing: "0.2em", fontWeight: 700, textTransform: "uppercase", marginBottom: 14, paddingBottom: 8, borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+              <div
+                style={{
+                  fontSize: 9,
+                  color: PRIMARY,
+                  letterSpacing: "0.2em",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  marginBottom: 14,
+                  paddingBottom: 8,
+                  borderBottom: "1px solid rgba(255,255,255,0.06)",
+                }}
+              >
                 {cat}
               </div>
               {links.map((l) => (
@@ -109,7 +148,16 @@ export default function Footer() {
           {/* Logo */}
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <div style={{ width: 36, height: 36, borderRadius: "50%", border: "2px solid rgba(255,255,255,0.3)", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
-              <div style={{ position: "absolute", width: 40, height: 16, borderRadius: "50%", border: "1.5px solid #E8272A", transform: "rotate(-22deg)" }} />
+              <div
+                style={{
+                  position: "absolute",
+                  width: 40,
+                  height: 16,
+                  borderRadius: "50%",
+                  border: `1.5px solid ${PRIMARY}`,
+                  transform: "rotate(-22deg)",
+                }}
+              />
               <span style={{ fontWeight: 900, fontSize: 14, color: "#fff", fontStyle: "italic", zIndex: 1 }}>N</span>
             </div>
             <div>
@@ -137,7 +185,7 @@ export default function Footer() {
           <div style={{ border: "1px solid rgba(255,255,255,0.08)", padding: "12px 18px", textAlign: "center" }}>
             <div style={{ fontSize: 8, color: "rgba(255,255,255,0.2)", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 6 }}>Startup IA</div>
             <div style={{ fontSize: 12, color: "#fff", fontWeight: 700 }}>Burkina Faso</div>
-            <div style={{ fontSize: 10, color: "#E8272A", marginTop: 4 }}>Founded 2026</div>
+            <div style={{ fontSize: 10, color: PRIMARY, marginTop: 4 }}>Founded 2026</div>
           </div>
         </div>
       </div>
